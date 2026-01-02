@@ -1,0 +1,24 @@
+<div class="transaction-history">
+  <h2>Recent Transactions</h2>
+
+  <app-add-transaction />
+  <div class="list-container">
+    @for (item of transactionService.transactions(); track item.id) {
+      <div class="transaction-item" [class]="item.category.toLowerCase()">
+        <div class="info">
+          <span class="title">{{ item.title }}</span>
+          <span class="date">{{ item.date | date:'mediumDate' }}</span>
+        </div>
+        
+        <div class="amount-section">
+          <span class="amount">
+            {{ item.amount > 0 ? '+' : '' }}{{ item.amount | currency:'USD' }}
+          </span>
+          <span class="category-badge">{{ item.category }}</span>
+        </div>
+      </div>
+    } @empty {
+      <p class="empty-msg">No transactions found. Add your first record!</p>
+    }
+  </div>
+</div>

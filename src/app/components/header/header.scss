@@ -1,0 +1,68 @@
+// Variables
+$navbar-bg: #ede6ef;
+$primary-color: #cd5ec7;
+$text-color: #2d3436;
+$nav-hover-bg: #f8f9fa;
+$header-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+.main-header {
+  background-color: $navbar-bg;
+  box-shadow: $header-shadow;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; // Pushes logo to left, links to right
+  align-items: center;
+  height: 70px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $primary-color;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+
+    li {
+      a {
+        text-decoration: none;
+        color: $text-color;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $nav-hover-bg;
+          color: $primary-color;
+        }
+
+        // This class is added automatically by Angular routerLinkActive
+        &.active {
+          background-color: rgba($primary-color, 0.1);
+          color: $primary-color;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
