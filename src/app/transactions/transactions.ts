@@ -1,14 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { TransactionService } from '../services/transaction-service';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { AddTransaction } from '../components/add-transaction/add-transaction';
+import { ListTransactions } from "../components/list-transactions/list-transactions";
 
 @Component({
   selector: 'app-transactions',
-  imports: [CurrencyPipe, DatePipe, AddTransaction],
+  imports: [ AddTransaction, ListTransactions],
   templateUrl: './transactions.html',
   styleUrl: './transactions.scss',
 })
 export class Transactions {
-  transactionService = inject(TransactionService);
 }

@@ -1,0 +1,7 @@
+.add-transaction {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start; // Or flex-end if they want it on the right, but usually left or matching content
+}

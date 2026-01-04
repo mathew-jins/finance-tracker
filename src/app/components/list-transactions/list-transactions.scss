@@ -1,0 +1,98 @@
+$income-color: #27ae60;
+$expense-color: #e74c3c;
+$investment-color: #3498db;
+
+.transaction-history {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    h2 { margin: 0; }
+  }
+
+  .filter-control {
+    mat-form-field {
+      width: 180px;
+      font-size: 13px;
+
+      // Remove bottom padding reserved for hint/error
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
+
+      // Pill shape overrides for MDC outline
+      .mdc-notched-outline__leading {
+        border-top-left-radius: 18px;
+        border-bottom-left-radius: 18px;
+        width: 16px !important;
+      }
+      .mdc-notched-outline__trailing {
+        border-top-right-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+
+      // Compact height adjustments
+      .mat-mdc-text-field-wrapper {
+        height: 36px;
+        padding: 0;
+      }
+
+      .mat-mdc-form-field-flex {
+        height: 36px;
+        align-items: center;
+        padding: 0 12px;
+      }
+
+      .mat-mdc-form-field-infix {
+        padding: 0 !important;
+        min-height: 36px;
+        border-top: 0;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 5px solid #ccc; // Default border
+
+    // Dynamic border colors based on category
+    &.income { border-left-color: $income-color; .amount { color: $income-color; } }
+    &.expense { border-left-color: $expense-color; .amount { color: $expense-color; } }
+    &.investment { border-left-color: $investment-color; .amount { color: $investment-color; } }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      .title { font-weight: 600; font-size: 1.1rem; }
+      .date { font-size: 0.85rem; color: #888; }
+    }
+
+    .amount-section {
+      text-align: right;
+      .amount { font-weight: 700; font-size: 1.1rem; display: block; }
+      .category-badge {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        background: #f0f0f0;
+        padding: 2px 8px;
+        border-radius: 10px;
+        color: #666;
+      }
+    }
+  }
+}

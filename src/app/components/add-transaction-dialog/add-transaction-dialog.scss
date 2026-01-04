@@ -1,0 +1,58 @@
+.dialog-header {
+  text-align: center;
+  padding: 24px 24px 0;
+  margin-bottom: 20px;
+
+  .header-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    color: #673ab7; // Deep Purple
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #1c1b1f;
+  }
+
+  .header-subtitle {
+    margin: 8px 0 0;
+    color: #49454f;
+    font-size: 0.9rem;
+  }
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px; // Limit width on large screens
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+
+  .half-width {
+    flex: 1;
+  }
+
+  // Responsive: Stack items on small screens
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.income-icon { color: #27ae60; margin-right: 8px; }
+.expense-icon { color: #e74c3c; margin-right: 8px; }
+.investment-icon { color: #3498db; margin-right: 8px; }

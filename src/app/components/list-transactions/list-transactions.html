@@ -1,0 +1,36 @@
+<div class="transaction-history">
+  <div class="header-row">
+    <h2>Recent Transactions</h2>
+    <div class="filter-control">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Filter by Category</mat-label>
+        <mat-select [(ngModel)]="selectedCategory">
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Income">Income</mat-option>
+          <mat-option value="Expense">Expense</mat-option>
+          <mat-option value="Investment">Investment</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="list-container">
+    @for (item of transactionService.transactions() | categoryFilter:selectedCategory(); track item.id) {
+      <div class="transaction-item" [class]="item.category.toLowerCase()" [appCategoryColor]="item.category">
+        <div class="info">
+          <span class="title">{{ item.title }}</span>
+          <span class="date">{{ item.date | date:'mediumDate' }}</span>
+        </div>
+        
+        <div class="amount-section">
+          <span class="amount">
+            {{ item.amount > 0 ? '+' : '' }}{{ item.amount | currency:'USD' }}
+          </span>
+          <span class="category-badge">{{ item.category }}</span>
+        </div>
+      </div>
+    } @empty {
+      <p class="empty-msg">No transactions found. Add your first record!</p>
+    }
+  </div>
+</div>

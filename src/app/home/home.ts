@@ -1,16 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { TransactionService } from '../services/transaction-service';
-import { CurrencyPipe } from '@angular/common';
+import { Component } from '@angular/core';
+import { Dasboard } from '../components/dasboard/dasboard';
 
 @Component({
   selector: 'app-home',
-  imports: [CurrencyPipe],
+  standalone: true,
+  imports: [Dasboard],  
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
-  
-  transactionService= inject(TransactionService);
-
-
 }

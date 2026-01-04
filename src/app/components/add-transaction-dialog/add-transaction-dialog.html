@@ -1,0 +1,61 @@
+  <div class="dialog-header">
+  <mat-icon class="header-icon">receipt_long</mat-icon>
+  <h2 mat-dialog-title>New Transaction</h2>
+  <p class="header-subtitle">Enter the details of your transaction below.</p>
+</div>
+
+<mat-dialog-content>
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" class="transaction-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="e.g. Groceries" required>
+      <mat-icon matSuffix>edit</mat-icon>
+      @if (transactionForm.get('title')?.hasError('required')) {
+        <mat-error>Title is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" formControlName="amount" placeholder="0.00" required>
+        <span matTextPrefix>$&nbsp;</span>
+        @if (transactionForm.get('amount')?.hasError('required')) {
+          <mat-error>Required</mat-error>
+        }
+        @if (transactionForm.get('amount')?.hasError('min')) {
+          <mat-error>Min 0.01</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category" required>
+          <mat-option value="Income">
+            <mat-icon class="income-icon">arrow_upward</mat-icon> Income
+          </mat-option>
+          <mat-option value="Expense">
+            <mat-icon class="expense-icon">arrow_downward</mat-icon> Expense
+          </mat-option>
+          <mat-option value="Investment">
+            <mat-icon class="investment-icon">trending_up</mat-icon> Investment
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" (click)="picker.open()" readonly required>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker [touchUi]="true"></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="transactionForm.invalid">
+    <mat-icon>check</mat-icon> Save Transaction
+  </button>
+</mat-dialog-actions>
